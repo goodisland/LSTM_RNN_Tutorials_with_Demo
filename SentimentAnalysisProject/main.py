@@ -1,10 +1,13 @@
 import numpy as np
 from keras.models import Model
 from keras.layers import Dense, Input, Dropout, LSTM, Activation
-from keras.layers.embeddings import Embedding
+# from keras.layers.embeddings import Embedding
+from keras.layers import Embedding
 from keras.preprocessing import sequence
 from keras.initializers import glorot_uniform
 from emo_utils import *
+
+import os
 
 np.random.seed(1)
 
@@ -115,6 +118,7 @@ def SentimentAnalysis(input_shape, word_to_vec_map, word_to_index):
 
 
 if __name__ == "__main__":
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     # Read train and test files
     X_train, Y_train = read_csv('train_emoji.csv')
     X_test, Y_test = read_csv('test_emoji.csv')
